@@ -13,6 +13,7 @@ export default function LoadingLogo({ size = 100 }: Props) {
         width={size}
         height={size}
         className='animate-pulse duration-700'
+        priority
       />
     </div>
   );
