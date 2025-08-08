@@ -1,3 +1,4 @@
+import { Toaster } from '@/components/ui/shadcn/sonner';
 import { TooltipProvider } from '@/components/ui/shadcn/tooltip';
 import { ThemeProvider } from '@/components/ui/theme/theme-provider';
 import ConvexClientProvider from '@/providers/ConvexClientProvider';
@@ -39,6 +40,7 @@ export default function RootLayout({
         >
           <ConvexClientProvider>
             <TooltipProvider>{children}</TooltipProvider>
+            <Toaster richColors />
           </ConvexClientProvider>
         </ThemeProvider>
       </body>
