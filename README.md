@@ -43,6 +43,10 @@
     # get this from clerk webhook signing secret
     CLERK_WEBHOOK_SECRET=whsec_xxxxxxxx
 
+    # using a custom sign in page
+    NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+    NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/
+
     # get this from clerk jwt templates, issuer url
     NEXT_PUBLIC_CLERK_FRONTEND_API_URL=https://some-verb-00.clerk.accounts.dev
     ```
