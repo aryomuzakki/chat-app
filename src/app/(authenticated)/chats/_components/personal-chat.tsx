@@ -8,9 +8,17 @@ type Props = {
   id: Id<'chats'>;
   imageUrl: string;
   username: string;
+  lastMessageSender?: string;
+  lastMessageContent?: string;
 };
 
-export default function PersonalChat({ id, imageUrl, username }: Props) {
+export default function PersonalChat({
+  id,
+  imageUrl,
+  username,
+  lastMessageSender,
+  lastMessageContent,
+}: Props) {
   return (
     <Link
       href={`/chats/${id}`}
@@ -26,7 +34,17 @@ export default function PersonalChat({ id, imageUrl, username }: Props) {
           </Avatar>
           <div className='flex flex-col truncate'>
             <h4 className='truncate'>{username}</h4>
-            <p className='text-muted-foreground truncate text-sm'>Start to chat!</p>
+            {lastMessageSender && lastMessageContent ? (
+              <span className='text-muted-foreground flex truncate text-sm overflow-ellipsis'>
+                <p className='font-semibold'>
+                  {lastMessageSender}
+                  {':'}&nbsp;
+                </p>
+                <p className='truncate overflow-ellipsis'>{lastMessageContent}</p>
+              </span>
+            ) : (
+              <p className='text-muted-foreground truncate text-sm'>Start to chat!</p>
+            )}
           </div>
         </div>
       </Card>

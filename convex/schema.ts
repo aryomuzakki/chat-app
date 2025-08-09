@@ -39,7 +39,7 @@ export default defineSchema({
     .index('by_memberId_chatId', ['memberId', 'chatId']),
   messages: defineTable({
     senderId: v.id('users'),
-    chatId: v.id('chat'),
+    chatId: v.id('chats'),
     type: v.string(),
     content: v.array(v.string()),
   }).index('by_chatId', ['chatId']),
