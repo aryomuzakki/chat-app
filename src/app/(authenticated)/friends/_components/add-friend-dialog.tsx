@@ -103,7 +103,7 @@ export default function AddFriendDialog() {
 
             <DialogFooter>
               <Button
-                disabled={false}
+                disabled={pending}
                 type='submit'
               >
                 Send

@@ -16,8 +16,8 @@ export default function ItemList({ children, title, action: Action }: Props) {
   return (
     <Card
       className={cn('hidden h-full w-full p-2 lg:w-80 lg:flex-none', {
-        'block': !isActive,
-        'lg:block': isActive,
+        'flex': !isActive,
+        'lg:flex': isActive,
       })}
     >
       <div className='mb-4 flex items-center justify-between'>

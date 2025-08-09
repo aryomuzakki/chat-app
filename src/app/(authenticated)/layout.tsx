@@ -8,7 +8,7 @@ type Props = PropsWithChildren<{}>;
 export default function AuthenticatedLayout({ children }: Props) {
   return (
     <AuthenticatedProvider>
-      <SidebarWrapper>{children}</SidebarWrapper>;
+      <SidebarWrapper>{children}</SidebarWrapper>
     </AuthenticatedProvider>
   );
 }

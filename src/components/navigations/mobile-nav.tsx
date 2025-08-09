@@ -1,5 +1,6 @@
 'use client';
 
+import { Badge } from '@/components/ui/shadcn/badge';
 import { Button } from '@/components/ui/shadcn/button';
 import { Card } from '@/components/ui/shadcn/card';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/shadcn/tooltip';
@@ -32,6 +33,11 @@ export default function MobileNav() {
                       variant={path.active ? 'default' : 'outline'}
                     >
                       {path.icon}
+                      {path.count ? (
+                        <Badge className='border-card absolute bottom-6 left-6 rounded-full px-2'>
+                          {path.count}
+                        </Badge>
+                      ) : null}
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -44,7 +50,7 @@ export default function MobileNav() {
           <li className=''>
             <ThemeToggle />
           </li>
-          <li className=''>
+          <li className='flex items-center'>
             <UserButton />
           </li>
         </ul>
