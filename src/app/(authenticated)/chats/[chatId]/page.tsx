@@ -3,6 +3,8 @@
 import ChatBody from '@/app/(authenticated)/chats/[chatId]/_components/chat-body';
 import ChatHeader from '@/app/(authenticated)/chats/[chatId]/_components/chat-header';
 import ChatInput from '@/app/(authenticated)/chats/[chatId]/_components/chat-input';
+import DeleteGroupDialog from '@/app/(authenticated)/chats/[chatId]/_components/dialogs/delete-group-dialog';
+import LeaveGroupDialog from '@/app/(authenticated)/chats/[chatId]/_components/dialogs/leave-group-dialog';
 import RemoveFriendDialog from '@/app/(authenticated)/chats/[chatId]/_components/dialogs/remove-friend-dialog';
 import ChatContainer from '@/components/chats/chat-container';
 import { api } from '@rootdir/convex/_generated/api';
@@ -37,6 +39,16 @@ export default function ChatDetailPage({ params }: Props) {
         chatId={chatId}
         open={removeFriendDialogOpen}
         setOpen={setRemoveFriendDialogOpen}
+      />
+      <DeleteGroupDialog
+        chatId={chatId}
+        open={deleteGroupDialogOpen}
+        setOpen={setDeleteGroupDialogOpen}
+      />
+      <LeaveGroupDialog
+        chatId={chatId}
+        open={leaveGroupDialogOpen}
+        setOpen={setLeaveGroupDialogOpen}
       />
       <ChatHeader
         name={(chat.isGroup ? chat.name : chat.otherMember.username) || ''}

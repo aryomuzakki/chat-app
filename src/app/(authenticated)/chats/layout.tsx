@@ -1,5 +1,7 @@
 'use client';
 
+import CreateGroupDialog from '@/app/(authenticated)/chats/_components/create-group-dialog';
+import GroupChat from '@/app/(authenticated)/chats/_components/group-chat';
 import PersonalChat from '@/app/(authenticated)/chats/_components/personal-chat';
 import ItemList from '@/components/ui/item-list';
 import { api } from '@rootdir/convex/_generated/api';
@@ -15,13 +17,24 @@ export default function ChatsLayout({ children }: Props) {
 
   return (
     <>
-      <ItemList title='Chats'>
+      <ItemList
+        title='Chats'
+        action={<CreateGroupDialog />}
+      >
         {chats ? (
           chats.length === 0 ? (
             <p className='flex size-full items-center justify-center'>No chats found</p>
           ) : (
             chats.map(chat => {
-              return chat.chat.isGroup ? null : (
+              return chat.chat.isGroup ? (
+                <GroupChat
+                  key={chat.chat._id}
+                  id={chat.chat._id}
+                  name={chat.chat.name || ''}
+                  lastMessageContent={chat.lastMessage?.content}
+                  lastMessageSender={chat.lastMessage?.sender}
+                />
+              ) : (
                 <PersonalChat
                   key={chat.chat._id}
                   id={chat.chat._id}
