@@ -82,7 +82,17 @@ export default function ChatDetailPage({ params }: Props) {
               ]
         }
       />
-      <ChatBody />
+      <ChatBody
+        members={
+          chat.isGroup
+            ? chat.otherMembers
+              ? chat.otherMembers
+              : []
+            : chat.otherMember
+              ? [chat.otherMember]
+              : []
+        }
+      />
       <ChatInput />
     </ChatContainer>
   );

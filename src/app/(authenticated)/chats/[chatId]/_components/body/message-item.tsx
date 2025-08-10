@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/shadcn/avatar';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
+import type { ReactNode } from 'react';
 
 type Props = {
   fromCurrentUser: boolean;
@@ -9,6 +10,7 @@ type Props = {
   lastByUser: boolean;
   content: string[];
   createdAt: number;
+  seen?: ReactNode;
   type: string;
 };
 
@@ -19,6 +21,7 @@ export default function MessageItem({
   lastByUser,
   content,
   createdAt,
+  seen,
   type,
 }: Props) {
   const formatTime = (timestamp: number) => format(timestamp, 'HH:mm');
@@ -55,6 +58,7 @@ export default function MessageItem({
             {formatTime(createdAt)}
           </p>
         </div>
+        {seen}
       </div>
 
       <Avatar
