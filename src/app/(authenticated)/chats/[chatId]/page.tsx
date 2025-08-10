@@ -25,7 +25,7 @@ export default function ChatDetailPage({ params }: Props) {
   const [removeFriendDialogOpen, setRemoveFriendDialogOpen] = useState(false);
   const [deleteGroupDialogOpen, setDeleteGroupDialogOpen] = useState(false);
   const [leaveGroupDialogOpen, setLeaveGroupDialogOpen] = useState(false);
-  const [callType, setCallType] = useState<'audio' | 'video' | null>(null);
+  // const [callType, setCallType] = useState<'audio' | 'video' | null>(null);
 
   return chat === undefined ? (
     <div className='flex size-full items-center justify-center'>
@@ -51,8 +51,8 @@ export default function ChatDetailPage({ params }: Props) {
         setOpen={setLeaveGroupDialogOpen}
       />
       <ChatHeader
-        name={(chat.isGroup ? chat.name : chat.otherMember.username) || ''}
-        imageUrl={chat.isGroup ? undefined : chat.otherMember.imageUrl}
+        name={(chat.isGroup ? chat.name : chat.otherMember?.username) || ''}
+        imageUrl={chat.isGroup ? undefined : chat.otherMember?.imageUrl}
         options={
           chat.isGroup
             ? [

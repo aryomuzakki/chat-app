@@ -7,21 +7,16 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { api } from '@rootdir/convex/_generated/api';
 import { ConvexError } from 'convex/values';
 import { SendHorizonalIcon } from 'lucide-react';
-import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import TextareaAutosize from 'react-textarea-autosize';
 import { toast } from 'sonner';
 import z from 'zod';
 
-type Props = {};
-
 const chatMessageSchema = z.object({
   content: z.string().min(1, { error: 'This field cannot be empty' }),
 });
 
-export default function ChatInput({}: Props) {
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-
+export default function ChatInput() {
   const { chatId } = useChats();
 
   const { mutate: createMessage, pending } = useMutationState(api.message.create);

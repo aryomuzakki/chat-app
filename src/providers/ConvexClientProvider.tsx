@@ -1,9 +1,8 @@
 'use client';
 
-import LoadingLogo from '@/components/loading-logo';
 import { ClerkProvider, useAuth } from '@clerk/nextjs';
 import { shadcn } from '@clerk/themes';
-import { AuthLoading, ConvexReactClient } from 'convex/react';
+import { ConvexReactClient } from 'convex/react';
 import { ConvexProviderWithClerk } from 'convex/react-clerk';
 import { ReactNode } from 'react';
 
@@ -20,9 +19,9 @@ export default function ConvexClientProvider({ children }: { children: ReactNode
         client={convex}
         useAuth={useAuth}
       >
-        <AuthLoading>
+        {/* <ClerkLoading>
           <LoadingLogo />
-        </AuthLoading>
+        </ClerkLoading> */}
         {children}
       </ConvexProviderWithClerk>
     </ClerkProvider>

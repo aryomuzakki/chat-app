@@ -19,6 +19,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Chat App',
   description: 'A chat app',
+  appleWebApp: {
+    title: 'Chat App',
+  },
 };
 
 export default function RootLayout({

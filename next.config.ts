@@ -16,11 +16,6 @@ const isProd = process.env.NEXT_PUBLIC_APP_URL
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  // logging: {
-  //   fetches: {
-  //     fullUrl: !isProd,
-  //   },
-  // },
   eslint: {
     dirs: ['src'],
     ignoreDuringBuilds: true,
