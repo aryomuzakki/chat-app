@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback } from '@/components/ui/shadcn/avatar';
+import { Badge } from '@/components/ui/shadcn/badge';
 import { Card } from '@/components/ui/shadcn/card';
 import type { Id } from '@rootdir/convex/_generated/dataModel';
 import Link from 'next/link';
@@ -8,15 +9,22 @@ type Props = {
   name: string;
   lastMessageSender?: string;
   lastMessageContent?: string;
+  unseenCount: number;
 };
 
-export default function GroupChat({ id, name, lastMessageSender, lastMessageContent }: Props) {
+export default function GroupChat({
+  id,
+  name,
+  lastMessageSender,
+  lastMessageContent,
+  unseenCount,
+}: Props) {
   return (
     <Link
       href={`/chats/${id}`}
       className='w-full'
     >
-      <Card className='flex flex-row items-center gap-4 truncate p-2'>
+      <Card className='flex flex-row items-center justify-between p-2'>
         <div className='flex flex-row items-center gap-4 truncate'>
           <Avatar className='size-11'>
             <AvatarFallback>{name.charAt(0).toLocaleUpperCase()}</AvatarFallback>
@@ -36,6 +44,7 @@ export default function GroupChat({ id, name, lastMessageSender, lastMessageCont
             )}
           </div>
         </div>
+        {unseenCount ? <Badge className='rounded-full'>{unseenCount}</Badge> : null}
       </Card>
     </Link>
   );

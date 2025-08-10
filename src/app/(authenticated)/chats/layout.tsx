@@ -33,6 +33,7 @@ export default function ChatsLayout({ children }: Props) {
                   name={chat.chat.name || ''}
                   lastMessageContent={chat.lastMessage?.content}
                   lastMessageSender={chat.lastMessage?.sender}
+                  unseenCount={chat.unseenCount}
                 />
               ) : (
                 <PersonalChat
@@ -42,6 +43,7 @@ export default function ChatsLayout({ children }: Props) {
                   imageUrl={chat.otherMember?.imageUrl || ''}
                   lastMessageContent={chat.lastMessage?.content}
                   lastMessageSender={chat.lastMessage?.sender}
+                  unseenCount={chat.unseenCount}
                 />
               );
             })

@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/shadcn/avatar';
+import { Badge } from '@/components/ui/shadcn/badge';
 import { Card } from '@/components/ui/shadcn/card';
 import type { Id } from '@rootdir/convex/_generated/dataModel';
 import { UserIcon } from 'lucide-react';
@@ -10,6 +11,7 @@ type Props = {
   username: string;
   lastMessageSender?: string;
   lastMessageContent?: string;
+  unseenCount: number;
 };
 
 export default function PersonalChat({
@@ -18,13 +20,14 @@ export default function PersonalChat({
   username,
   lastMessageSender,
   lastMessageContent,
+  unseenCount,
 }: Props) {
   return (
     <Link
       href={`/chats/${id}`}
       className='w-full'
     >
-      <Card className='flex flex-row items-center gap-4 truncate p-2'>
+      <Card className='flex flex-row items-center justify-between p-2'>
         <div className='flex flex-row items-center gap-4 truncate'>
           <Avatar className='size-11'>
             <AvatarImage src={imageUrl} />
@@ -47,6 +50,7 @@ export default function PersonalChat({
             )}
           </div>
         </div>
+        {unseenCount ? <Badge className='rounded-full'>{unseenCount}</Badge> : null}
       </Card>
     </Link>
   );
