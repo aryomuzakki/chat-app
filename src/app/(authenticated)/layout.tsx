@@ -1,3 +1,5 @@
+'use client';
+
 import LoadingLogo from '@/components/loading-logo';
 import SidebarWrapper from '@/components/navigations/sidebar-wrapper';
 import AuthenticatedProvider from '@/providers/AuthenticatedProviders';
