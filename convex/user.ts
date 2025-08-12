@@ -9,7 +9,21 @@ export const create = internalMutation({
     email: v.string(),
   },
   handler: async (ctx, args) => {
-    await ctx.db.insert('users', args);
+    const existing = await ctx.db
+      .query('users')
+      .withIndex('by_clerkId', q => q.eq('clerkId', args.clerkId))
+      .unique();
+
+    if (existing) {
+      // Update existing record
+      await ctx.db.patch(existing._id, {
+        username: args.username,
+        imageUrl: args.imageUrl,
+        email: args.email,
+      });
+    } else {
+      await ctx.db.insert('users', args);
+    }
   },
 });
 

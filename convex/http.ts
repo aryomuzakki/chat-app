@@ -33,12 +33,7 @@ const handlerClerkWebhook = httpAction(async (ctx, req) => {
   }
 
   switch (event.type) {
-    case 'user.created': {
-      const user = await ctx.runQuery(internal.user.get, { clerkId: event.data.id });
-      if (user) {
-        console.log(`Updating user ${event.data.id} with: ${event.data}`);
-      }
-    }
+    case 'user.created':
     case 'user.updated': {
       console.log(`Updating user ${event.data.id} with: ${event.data}`);
       await ctx.runMutation(internal.user.create, {
